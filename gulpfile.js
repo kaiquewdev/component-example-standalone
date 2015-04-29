@@ -1,0 +1,67 @@
+var gulp = require('gulp');
+var jshint = require('gulp-jshint');
+var stylish = require('jshint-stylish');
+var mocha = require('gulp-mocha');
+var browserify = require('gulp-browserify');
+var stylus = require('gulp-stylus');
+var connect = require('gulp-connect');
+
+gulp.task('lint', function () {
+  gulp
+    .src('./js/*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter(stylish));
+});
+
+gulp.task('tests', function () {
+  gulp
+    .src('./test/bdd/*.test.js', { read: false })
+    .pipe(mocha({ reporter: 'progress' }));
+});
+
+gulp.task('scripts', function () {
+    gulp
+      .src('./js/*.js')
+      .pipe(browserify({
+        insertGlobals: true,
+        debug: !process.env.production
+      }))
+      .pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('styles', function () {
+    gulp
+      .src('./stylus/*.styl')
+      .pipe(stylus())
+      .pipe(gulp.dest('./css/'));
+});
+
+gulp.task('connect', function () {
+  connect.server({
+    root: './',
+    livereload: true
+  });
+});
+
+gulp.task('watch', function () {
+    gulp.watch([
+      './*.html',
+      './css/*.css',
+      './stylus/*.styl',
+      './dist/*.js',
+      './js/*.js'
+    ], [
+      'lint',
+      'tests',
+      'scripts',
+      'styles'
+    ]);
+});
+
+gulp.task('default', [
+  'lint',
+  'scripts',
+  'styles',
+  'connect',
+  'watch'
+]);

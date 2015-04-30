@@ -97,6 +97,12 @@ Watch files and run these tasks `lint, tests, scripts, styles`
 [sudo] gulp watch
 ```
 
+# Running
+
+```
+[sudo] gulp
+```
+
 ## File structure
 
 + js - source code editable

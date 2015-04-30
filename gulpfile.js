@@ -6,6 +6,7 @@ var nightwatch = require('gulp-nightwatch');
 var browserify = require('gulp-browserify');
 var stylus = require('gulp-stylus');
 var connect = require('gulp-connect');
+var notify = require('gulp-notify');
 
 gulp.task('lint', function () {
   gulp
@@ -50,6 +51,7 @@ gulp.task('connect', function () {
     root: './',
     livereload: true
   });
+  gulp.src('').pipe(notify('Server running!'));
 });
 
 gulp.task('watch', function () {

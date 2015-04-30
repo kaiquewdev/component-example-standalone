@@ -18,10 +18,12 @@
     "gulp-connect": "^2.2.0",
     "gulp-jshint": "^1.10.0",
     "gulp-mocha": "^2.0.1",
+    "gulp-nightwatch": "^0.1.0",
     "gulp-sourcemaps": "^1.5.2",
     "gulp-stylus": "^2.0.1",
     "gulp-watch": "^4.2.4",
     "jshint-stylish": "^1.0.1",
+    "nightwatch": "^0.6.7",
     "should": "^6.0.1"
   }
 }

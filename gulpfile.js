@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var jshint = require('gulp-jshint');
 var stylish = require('jshint-stylish');
 var mocha = require('gulp-mocha');
+var nightwatch = require('gulp-nightwatch');
 var browserify = require('gulp-browserify');
 var stylus = require('gulp-stylus');
 var connect = require('gulp-connect');
@@ -17,6 +18,14 @@ gulp.task('tests', function () {
   gulp
     .src('./test/bdd/*.test.js', { read: false })
     .pipe(mocha({ reporter: 'progress' }));
+});
+
+gulp.task('tests-e2e', function () {
+  gulp
+    .src('')
+    .pipe(nightwatch({
+      configFile: './nightwatch.json'
+    }));
 });
 
 gulp.task('scripts', function () {
@@ -54,14 +63,16 @@ gulp.task('watch', function () {
       'lint',
       'tests',
       'scripts',
-      'styles'
+      'styles',
+      'tests-e2e',
     ]);
 });
 
 gulp.task('default', [
   'lint',
+  'tests',
   'scripts',
   'styles',
   'connect',
-  'watch'
+  'tests-e2e',
 ]);

@@ -47,6 +47,22 @@ Run code style checker to maintain the pattern of code
 [sudo] gulp lint
 ```
 
+### Tests
+
+Run tests `tdd` or/and `bdd`
+
+```
+[sudo] gulp tests
+```
+
+### Tests end-to-end
+
+Run tests end-to-end
+
+```
+[sudo] gulp tests-e2e
+```
+
 ### Scripts
 
 Browserify js files

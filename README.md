@@ -21,9 +21,11 @@
 
 ## Dependencies
 
-+ Nodejs
-+ Gulp
-+ Git
++ [Nodejs](https://nodejs.org/download/)
++ Gulp - `[sudo] npm i -g gulp`
++ [Git](http://git-scm.com/downloads)
++ [Selenium server standalone] (http://selenium-release.storage.googleapis.com/index.html)
++ [nvm](https://github.com/creationix/nvm) `optional`
 
 ## Installation
 

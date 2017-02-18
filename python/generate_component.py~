@@ -1,4 +1,6 @@
+'''Generate component'''
 
+raw_component = '''
 <link rel="stylesheet" href="./css/component-example-standalone.css">
 
 <ul class="component-example-standalone">
@@ -9,3 +11,11 @@
 
 <script src="./dist/component-example-standalone.js"></script>
 <script src="./dist/component-example-standalone-app.js"></script>
+'''
+file_component = open('component-example-standalone.html','w')
+
+if __name__ == '__main__':
+    file_component.write(raw_component)
+    file_component.close()
+
+

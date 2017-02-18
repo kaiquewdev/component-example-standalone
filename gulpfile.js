@@ -1,12 +1,14 @@
-var gulp = require('gulp');
-var jshint = require('gulp-jshint');
-var stylish = require('jshint-stylish');
-var mocha = require('gulp-mocha');
-var nightwatch = require('gulp-nightwatch');
-var browserify = require('gulp-browserify');
-var stylus = require('gulp-stylus');
-var connect = require('gulp-connect');
-var notify = require('gulp-notify');
+'use strict';
+const gulp = require('gulp');
+const jshint = require('gulp-jshint');
+const stylish = require('jshint-stylish');
+const mocha = require('gulp-mocha');
+const nightwatch = require('gulp-nightwatch');
+const browserify = require('gulp-browserify');
+const stylus = require('gulp-stylus');
+const connect = require('gulp-connect');
+const notify = require('gulp-notify');
+const shell = require('gulp-shell');
 
 gulp.task('lint', function () {
   gulp
@@ -69,6 +71,8 @@ gulp.task('watch', function () {
       'tests-e2e',
     ]);
 });
+
+gulp.task('coverage', shell.task(['./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage']));
 
 gulp.task('default', [
   'lint',

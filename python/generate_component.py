@@ -2,19 +2,62 @@
 
 import os
 
+class Link(object):
+    def __init__(self,rel="stylesheet",href="./css/component-example-standalone.css"):
+        self.rel = rel
+        self.href = href
+
+    def __str__(self):
+        return '<link rel="%s" href="%s">' % (self.rel,self.href)
+
+class UnorderedList(object):
+    def __init__(self,selector="component-example-standalone",html=""):
+        self.selector = selector
+        self.html = html
+
+    def __str__(self):
+        return '<ul class="%s">%s</ul>' % (self.selector,self.html)
+
+class ListItem(object):
+    def __init__(self,html=''):
+        self.html = html
+
+    def __str__(self):
+        return '<li>%s</li>' % (self.html)
+
+class Anchor(object):
+    def __init__(self,href='',html=''):
+        self.href = href
+        self.html = html
+
+    def __str__(self):
+        return '<a href="%s">%s</a>' % (self.href,self.html)
+
+class Script(object):
+    def __init__(self,src=""):
+        self.src = src
+
+    def __str__(self):
+        return '<script src="%s"/>' % (self.src)
+
 project_location = os.path.join(os.environ['HOME'],'war/component-example-standalone/')
 raw_component = '''
-<link rel="stylesheet" href="./css/component-example-standalone.css">
+{0}
 
-<ul class="component-example-standalone">
-    <li><a href="#">teste 1</a></li>
-    <li><a href="#">teste 2</a></li>
-    <li><a href="#">teste 3</a></li>
-</ul>
+{1}
 
-<script src="./dist/component-example-standalone.js"></script>
-<script src="./dist/component-example-standalone-app.js"></script>
-'''
+{2}
+{3}
+'''.format(
+    Link().__str__(),
+    UnorderedList(''.join([
+        ListItem(Anchor("#","teste 1").__str__()).__str__(),
+        ListItem(Anchor(href="#",html="teste 2").__str__()).__str__(),
+        ListItem(Anchor(href="#",html="teste 3").__str__()).__str__(),
+    ])).__str__(),
+    Script(src="./dist/component-example-standalone.js").__str__(),
+    Script(src="./dist/component-example-standalone-app.js").__str__(),
+)
 file_location = os.path.join(project_location,'component-example-standalone.html')
 file_component = open(file_location,'w')
 

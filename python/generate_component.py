@@ -10,6 +10,14 @@ class Link(object):
     def __str__(self):
         return '<link rel="%s" href="%s">' % (self.rel,self.href)
 
+class Header(object):
+    def __init__(self,html='Component Example Standalone',index=1):
+        self.index = index
+        self.html = html
+
+    def __str__(self):
+        return '<h%s>%s</h%s>' % (self.index,self.html,self.index)
+
 class UnorderedList(object):
     def __init__(self,selector="component-example-standalone",html=""):
         self.selector = selector
@@ -47,10 +55,13 @@ raw_component = '''
 {1}
 
 {2}
+
 {3}
+{4}
 '''.format(
     Link().__str__(),
-    UnorderedList(''.join([
+    Header().__str__(),
+    UnorderedList(html=''.join([
         ListItem(Anchor("#","teste 1").__str__()).__str__(),
         ListItem(Anchor(href="#",html="teste 2").__str__()).__str__(),
         ListItem(Anchor(href="#",html="teste 3").__str__()).__str__(),

@@ -18,6 +18,13 @@ class Header(object):
     def __str__(self):
         return '<h%s>%s</h%s>' % (self.index,self.html,self.index)
 
+class Paragraph(object):
+    def __init__(self,html='Modularized architecture'):
+        self.html = html
+
+    def __str__(self):
+        return '<p>%s</p>' % (self.html)
+
 class UnorderedList(object):
     def __init__(self,selector="component-example-standalone",html=""):
         self.selector = selector
@@ -57,10 +64,13 @@ raw_component = '''
 {2}
 
 {3}
+
 {4}
+{5}
 '''.format(
     Link().__str__(),
     Header().__str__(),
+    Paragraph(html='Modularized architecture').__str__(),
     UnorderedList(html=''.join([
         ListItem(Anchor("#","teste 1").__str__()).__str__(),
         ListItem(Anchor(href="#",html="teste 2").__str__()).__str__(),
@@ -75,5 +85,3 @@ file_component = open(file_location,'w')
 if __name__ == '__main__':
     file_component.write(raw_component)
     file_component.close()
-
-

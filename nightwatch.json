@@ -8,11 +8,12 @@
 
   "selenium" : {
     "start_process" : false,
-    "server_path" : "",
-    "log_path" : "",
+    "server_path" : "./opt/selenium-server-standalone-3.0.1.jar",
+    "log_path" : "./opt/geckodriver",
     "host" : "127.0.0.1",
     "port" : 4444,
     "cli_args" : {
+      "webdriver.gecko.driver": "",
       "webdriver.chrome.driver" : "",
       "webdriver.ie.driver" : ""
     }
@@ -31,7 +32,8 @@
       "desiredCapabilities": {
         "browserName": "firefox",
         "javascriptEnabled": true,
-        "acceptSslCerts": true
+        "acceptSslCerts": true,
+	"marionette": true
       }
     },
 

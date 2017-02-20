@@ -5,6 +5,7 @@ module.exports = {
       .waitForElementVisible('body', 1000)
       .waitForElementVisible('.component-example-standalone', 1000)
       .assert.elementPresent('h1')
+      .assert.elementPresent('h1','Component Example Standalone')
       .assert.elementPresent('.component-example-standalone')
       .assert.elementPresent('h2')
       .assert.containsText('li:nth-child(1)', 'teste 1')

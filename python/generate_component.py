@@ -63,6 +63,13 @@ class Anchor(object):
     def __str__(self):
         return '<a href="%s">%s</a>' % (self.href,self.html)
 
+class InputField(object):
+    def __init__(self):
+        pass
+
+    def __str__(self):
+        return '<input placeholder="Fill the field..." />'
+
 class Script(object):
     def __init__(self,src=""):
         self.src = src
@@ -87,7 +94,9 @@ raw_component = '''
 {6}
 
 {7}
+
 {8}
+{9}
 '''.format(
     Link().__str__(),
     Header().__str__(),
@@ -100,6 +109,7 @@ raw_component = '''
         ListItem(Anchor(href="#",html="teste 3").__str__()).__str__(),
     ])).__str__(),
     Hr().__str__(),
+    InputField().__str__(),
     Script(src="./dist/component-example-standalone.js").__str__(),
     Script(src="./dist/component-example-standalone-app.js").__str__(),
 )

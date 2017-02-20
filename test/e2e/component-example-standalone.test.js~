@@ -10,7 +10,6 @@ module.exports = {
       .assert.containsText('li:nth-child(1)', 'teste 1')
       .assert.containsText('li:nth-child(2)', 'teste 2')
       .assert.containsText('li:nth-child(3)', 'teste 3')
-      .assert.elementPresent('hr')
       .end();
   }
 };

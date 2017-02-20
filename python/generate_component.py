@@ -25,6 +25,21 @@ class Paragraph(object):
     def __str__(self):
         return '<p>%s</p>' % (self.html)
 
+class Hr(object):
+    def __init__(self):
+        pass
+
+    def __str__(self):
+        return '<hr></hr>'
+
+class SubHeader(object):
+    def __init__(self,html='List items',index=2):
+        self.index = index
+        self.html = html
+
+    def __str__(self):
+        return '<h%s>%s</h%s>' % (self.index,self.html,self.index)
+
 class UnorderedList(object):
     def __init__(self,selector="component-example-standalone",html=""):
         self.selector = selector
@@ -66,11 +81,17 @@ raw_component = '''
 {3}
 
 {4}
+
 {5}
+
+{6}
+{7}
 '''.format(
     Link().__str__(),
     Header().__str__(),
     Paragraph(html='Modularized architecture').__str__(),
+    Hr().__str__(),
+    SubHeader().__str__(),
     UnorderedList(html=''.join([
         ListItem(Anchor("#","teste 1").__str__()).__str__(),
         ListItem(Anchor(href="#",html="teste 2").__str__()).__str__(),

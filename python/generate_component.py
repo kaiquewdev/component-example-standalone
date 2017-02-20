@@ -85,7 +85,9 @@ raw_component = '''
 {5}
 
 {6}
+
 {7}
+{8}
 '''.format(
     Link().__str__(),
     Header().__str__(),
@@ -97,6 +99,7 @@ raw_component = '''
         ListItem(Anchor(href="#",html="teste 2").__str__()).__str__(),
         ListItem(Anchor(href="#",html="teste 3").__str__()).__str__(),
     ])).__str__(),
+    Hr().__str__(),
     Script(src="./dist/component-example-standalone.js").__str__(),
     Script(src="./dist/component-example-standalone-app.js").__str__(),
 )

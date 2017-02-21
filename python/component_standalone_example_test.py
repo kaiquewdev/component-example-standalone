@@ -40,6 +40,11 @@ class ComponentExampleStandaloneTest(unittest.TestCase):
         self.input = self.driver.find_element_by_tag_name('input')
         self.assertTrue(self.input)
 
+    def test_component_textarea(self):
+        self.driver.get(self.component_target_url)
+        self.textarea = self.driver.find_element_by_tag_name('textarea')
+        self.assertTrue(self.textarea)
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
 

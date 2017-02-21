@@ -70,6 +70,13 @@ class InputField(object):
     def __str__(self):
         return '<input placeholder="Fill the field..." />'
 
+class Textarea(object):
+    def __init__(self):
+        pass
+
+    def __str__(self):
+        return '<textarea></textarea>'
+
 class Script(object):
     def __init__(self,src=""):
         self.src = src
@@ -96,7 +103,9 @@ raw_component = '''
 {7}
 
 {8}
+
 {9}
+{10}
 '''.format(
     Link().__str__(),
     Header().__str__(),
@@ -110,6 +119,7 @@ raw_component = '''
     ])).__str__(),
     Hr().__str__(),
     InputField().__str__(),
+    Textarea().__str__(),
     Script(src="./dist/component-example-standalone.js").__str__(),
     Script(src="./dist/component-example-standalone-app.js").__str__(),
 )

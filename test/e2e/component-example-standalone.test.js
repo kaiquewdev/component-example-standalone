@@ -15,6 +15,7 @@ module.exports = {
       .assert.containsText('li:nth-child(3)', 'teste 3')
       .assert.elementPresent('hr')
       .assert.elementPresent('input')
+      .assert.elementPresent('textarea')
       .end();
   }
 };

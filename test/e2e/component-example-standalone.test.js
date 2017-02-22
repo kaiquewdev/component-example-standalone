@@ -16,6 +16,7 @@ module.exports = {
       .assert.elementPresent('hr')
       .assert.elementPresent('input')
       .assert.elementPresent('textarea')
+      .assert.elementPresent('hr')
       .end();
   }
 };

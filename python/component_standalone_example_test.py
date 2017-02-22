@@ -23,7 +23,7 @@ class ComponentExampleStandaloneTest(unittest.TestCase):
     def test_hr(self):
         self.driver.get(self.component_target_url)
         self.hr = self.driver.find_elements_by_css_selector('hr')
-        self.assertTrue(len(self.hr) == 2)
+        self.assertTrue(len(self.hr) == 3)
 
     def test_sub_header(self):
         self.driver.get(self.component_target_url)

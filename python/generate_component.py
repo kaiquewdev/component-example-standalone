@@ -120,6 +120,7 @@ raw_component = '''
     Hr().__str__(),
     InputField().__str__(),
     Textarea().__str__(),
+    Hr().__str__(),
     Script(src="./dist/component-example-standalone.js").__str__(),
     Script(src="./dist/component-example-standalone-app.js").__str__(),
 )

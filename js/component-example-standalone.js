@@ -5,6 +5,15 @@ function appendTextHandler() {
 exports.appendText = appendTextHandler;
 
 function promiseHandler() {
-  return {then: function (fn) {return fn({data:[]});}}
+    this.then = function (fn) {
+      return fn({data:[]});
+    };
+    this.when = function (fn) {
+      return fn({data:[]});
+    };
+    this.fail = function (fn) {
+      return fn({data:[]});
+    };
+    return this;
 }
 exports.promise = promiseHandler;

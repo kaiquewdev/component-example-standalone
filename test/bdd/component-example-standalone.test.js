@@ -7,9 +7,25 @@ describe('component example standalone', function () {
     componentExampleStandAlone.appendText('one',' two',' three',' four').should.be.eql('one two three four');
     componentExampleStandAlone.appendText(['first'],['second']).should.be.eql('firstsecond')
   });
+});
 
-  it('time counter', function (done) {
+describe('component example standalone', function () {
+  it('promise then', function (done) {
     componentExampleStandAlone.promise().then(function (res) {
+      res.data.should.be.eql([]);
+      done();
+    });
+  });
+
+  it('promise when', function (done) {
+    componentExampleStandAlone.promise().when(function (res) {
+      res.data.should.be.eql([]);
+      done();
+    })
+  });
+
+  it('promise fail', function (done) {
+    componentExampleStandAlone.promise().fail(function (res) {
       res.data.should.be.eql([]);
       done();
     });

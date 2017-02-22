@@ -1,5 +1,7 @@
 # Standalone component example
 
+[![Build Status](https://travis-ci.org/kaiquewdev/component-example-standalone.svg?branch=master)](https://travis-ci.org/kaiquewdev/component-example-standalone)
+
 ## Conveniences
 
 + Install `nodejs` on your machine

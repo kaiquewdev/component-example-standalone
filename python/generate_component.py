@@ -1,6 +1,7 @@
 '''Generate component'''
 
 import os
+import tags
 
 class Link(object):
     def __init__(self,rel="stylesheet",href="./css/component-example-standalone.css"):
@@ -107,11 +108,11 @@ raw_component = '''
 {9}
 {10}
 '''.format(
-    Link().__str__(),
-    Header().__str__(),
-    Paragraph(html='Modularized architecture').__str__(),
+    tags.Link({"rel":"stylesheet","href":"./css/component-example-standalone.css"}),
+    tags.Header(1).html('Component Example Standalone'),
+    tags.Paragraph().html('Modularized component'),
     Hr().__str__(),
-    SubHeader().__str__(),
+    tags.Header(2).html('List items'),
     UnorderedList(html=''.join([
         ListItem(Anchor("#","teste 1").__str__()).__str__(),
         ListItem(Anchor(href="#",html="teste 2").__str__()).__str__(),

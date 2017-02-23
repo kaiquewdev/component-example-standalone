@@ -18,7 +18,7 @@ class ComponentExampleStandaloneTest(unittest.TestCase):
     def test_paragraph(self):
         self.driver.get(self.component_target_url)
         self.paragraph = self.driver.find_element_by_css_selector('p')
-        self.assertEqual(self.paragraph.text,'Modularized architecture')
+        self.assertEqual(self.paragraph.text,'Modularized component')
 
     def test_hr(self):
         self.driver.get(self.component_target_url)

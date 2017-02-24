@@ -15,15 +15,20 @@ class ComponentExampleStandaloneTest(unittest.TestCase):
         self.header = self.driver.find_element_by_css_selector('h1')
         self.assertEqual(self.header.text,'Component Example Standalone')
 
-    def test_paragraph(self):
+    def test_first_paragraph(self):
         self.driver.get(self.component_target_url)
-        self.paragraph = self.driver.find_element_by_css_selector('p')
-        self.assertEqual(self.paragraph.text,'Modularized component')
+        self.first_paragraph = self.driver.find_element_by_css_selector('p.first_paragraph')
+        self.assertEqual(self.first_paragraph.text,'Modularized component')
+
+    def test_second_paragraph(self):
+        self.driver.get(self.component_target_url)
+        self.second_paragraph = self.driver.find_element_by_css_selector('p.second_paragraph')
+        self.assertEqual(self.second_paragraph.text,'Sample paragraph')
 
     def test_hr(self):
         self.driver.get(self.component_target_url)
         self.hr = self.driver.find_elements_by_css_selector('hr')
-        self.assertTrue(len(self.hr) == 3)
+        self.assertTrue(len(self.hr) == 4)
 
     def test_sub_header(self):
         self.driver.get(self.component_target_url)

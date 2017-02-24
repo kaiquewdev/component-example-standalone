@@ -26,11 +26,15 @@ raw_component = '''
 {9}
 
 {10}
+
 {11}
+
+{12}
+{13}
 '''.format(
     tags.Link({"rel":"stylesheet","href":"./css/component-example-standalone.css"}).html(),
     tags.Header(1).html('Component Example Standalone'),
-    tags.Paragraph().html('Modularized component'),
+    tags.Tag({'class':'first_paragraph'},'p').html('Modularized component'),
     tags.Tag({},'hr').html(),
     tags.Header(2).html('List items'),
     tags.Tag({'class':'component-example-standalone'},'ul').html(''.join([
@@ -41,6 +45,8 @@ raw_component = '''
     tags.Tag({},'hr').html(),
     tags.Tag({'placeholder':'Fill the field...'},'input').html(),
     tags.Tag({},'textarea').html(),
+    tags.Tag({},'hr').html(),
+    tags.Tag({'class':'second_paragraph'},'p').html('Sample paragraph'),
     tags.Tag({},'hr').html(),
     tags.Tag({'src':'./dist/component-example-standalone.js'},'script').html(),
     tags.Tag({'src':'./dist/component-example-standalone-app.js'},'script').html(),

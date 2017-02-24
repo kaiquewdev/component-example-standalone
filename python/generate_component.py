@@ -3,43 +3,12 @@
 import os
 import tags
 
-class Link(object):
-    def __init__(self,rel="stylesheet",href="./css/component-example-standalone.css"):
-        self.rel = rel
-        self.href = href
-
-    def __str__(self):
-        return '<link rel="%s" href="%s">' % (self.rel,self.href)
-
-class Header(object):
-    def __init__(self,html='Component Example Standalone',index=1):
-        self.index = index
-        self.html = html
-
-    def __str__(self):
-        return '<h%s>%s</h%s>' % (self.index,self.html,self.index)
-
-class Paragraph(object):
-    def __init__(self,html='Modularized architecture'):
-        self.html = html
-
-    def __str__(self):
-        return '<p>%s</p>' % (self.html)
-
 class Hr(object):
     def __init__(self):
         pass
 
     def __str__(self):
         return '<hr></hr>'
-
-class SubHeader(object):
-    def __init__(self,html='List items',index=2):
-        self.index = index
-        self.html = html
-
-    def __str__(self):
-        return '<h%s>%s</h%s>' % (self.index,self.html,self.index)
 
 class UnorderedList(object):
     def __init__(self,selector="component-example-standalone",html=""):
@@ -108,22 +77,22 @@ raw_component = '''
 {9}
 {10}
 '''.format(
-    tags.Link({"rel":"stylesheet","href":"./css/component-example-standalone.css"}),
+    tags.Link({"rel":"stylesheet","href":"./css/component-example-standalone.css"}).html(),
     tags.Header(1).html('Component Example Standalone'),
     tags.Paragraph().html('Modularized component'),
-    Hr().__str__(),
+    tags.Tag({},'hr').html(),
     tags.Header(2).html('List items'),
     UnorderedList(html=''.join([
-        ListItem(Anchor("#","teste 1").__str__()).__str__(),
-        ListItem(Anchor(href="#",html="teste 2").__str__()).__str__(),
-        ListItem(Anchor(href="#",html="teste 3").__str__()).__str__(),
+        tags.Tag({},'li').html(tags.Tag({'href':'#'},'a').html('teste 1')),
+        tags.Tag({},'li').html(tags.Tag({'href':'#'},'a').html('teste 2')),
+        tags.Tag({},'li').html(tags.Tag({'href':'#'},'a').html('teste 3')),
     ])).__str__(),
-    Hr().__str__(),
-    InputField().__str__(),
-    Textarea().__str__(),
-    Hr().__str__(),
-    Script(src="./dist/component-example-standalone.js").__str__(),
-    Script(src="./dist/component-example-standalone-app.js").__str__(),
+    tags.Tag({},'hr').html(),
+    tags.Tag({'placeholder':'Fill the field...'},'input').html(),
+    tags.Tag({},'textarea').html(),
+    tags.Tag({},'hr').html(),
+    tags.Tag({'src':'./dist/component-example-standalone.js'}).html(),
+    tags.Tag({'src':'./dist/component-example-standalone-app.js'}).html(),
 )
 file_location = os.path.join(project_location,'component-example-standalone.html')
 file_component = open(file_location,'w')

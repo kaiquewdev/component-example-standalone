@@ -75,24 +75,26 @@ raw_component = '''
 {8}
 
 {9}
+
 {10}
+{11}
 '''.format(
     tags.Link({"rel":"stylesheet","href":"./css/component-example-standalone.css"}).html(),
     tags.Header(1).html('Component Example Standalone'),
     tags.Paragraph().html('Modularized component'),
     tags.Tag({},'hr').html(),
     tags.Header(2).html('List items'),
-    UnorderedList(html=''.join([
+    tags.Tag({'class':'component-example-standalone'},'ul').html(''.join([
         tags.Tag({},'li').html(tags.Tag({'href':'#'},'a').html('teste 1')),
         tags.Tag({},'li').html(tags.Tag({'href':'#'},'a').html('teste 2')),
         tags.Tag({},'li').html(tags.Tag({'href':'#'},'a').html('teste 3')),
-    ])).__str__(),
+    ])),
     tags.Tag({},'hr').html(),
     tags.Tag({'placeholder':'Fill the field...'},'input').html(),
     tags.Tag({},'textarea').html(),
     tags.Tag({},'hr').html(),
-    tags.Tag({'src':'./dist/component-example-standalone.js'}).html(),
-    tags.Tag({'src':'./dist/component-example-standalone-app.js'}).html(),
+    tags.Tag({'src':'./dist/component-example-standalone.js'},'script').html(),
+    tags.Tag({'src':'./dist/component-example-standalone-app.js'},'script').html(),
 )
 file_location = os.path.join(project_location,'component-example-standalone.html')
 file_component = open(file_location,'w')

@@ -3,57 +3,6 @@
 import os
 import tags
 
-class Hr(object):
-    def __init__(self):
-        pass
-
-    def __str__(self):
-        return '<hr></hr>'
-
-class UnorderedList(object):
-    def __init__(self,selector="component-example-standalone",html=""):
-        self.selector = selector
-        self.html = html
-
-    def __str__(self):
-        return '<ul class="%s">%s</ul>' % (self.selector,self.html)
-
-class ListItem(object):
-    def __init__(self,html=''):
-        self.html = html
-
-    def __str__(self):
-        return '<li>%s</li>' % (self.html)
-
-class Anchor(object):
-    def __init__(self,href='',html=''):
-        self.href = href
-        self.html = html
-
-    def __str__(self):
-        return '<a href="%s">%s</a>' % (self.href,self.html)
-
-class InputField(object):
-    def __init__(self):
-        pass
-
-    def __str__(self):
-        return '<input placeholder="Fill the field..." />'
-
-class Textarea(object):
-    def __init__(self):
-        pass
-
-    def __str__(self):
-        return '<textarea></textarea>'
-
-class Script(object):
-    def __init__(self,src=""):
-        self.src = src
-
-    def __str__(self):
-        return '<script src="%s"/>' % (self.src)
-
 project_location = os.path.join(os.environ['HOME'],'war/component-example-standalone/')
 raw_component = '''
 {0}

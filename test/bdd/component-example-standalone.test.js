@@ -30,4 +30,11 @@ describe('component example standalone', function () {
       done();
     });
   });
+
+  it('promise result', function (done) {
+    componentExampleStandAlone.promise().result(function (res) {
+       res.data.should.be.eql([]);
+       done();
+    });
+  });
 });

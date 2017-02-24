@@ -14,6 +14,9 @@ function promiseHandler() {
     this.fail = function (fn) {
       return fn({data:[]});
     };
+    this.result = function (fn) {
+      return fn({data:[]});
+    };
     return this;
 }
 exports.promise = promiseHandler;

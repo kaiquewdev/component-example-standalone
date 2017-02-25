@@ -41,6 +41,7 @@ raw_component = '''
         tags.Tag({},'li').html(tags.Tag({'href':'#'},'a').html('teste 1')),
         tags.Tag({},'li').html(tags.Tag({'href':'#'},'a').html('teste 2')),
         tags.Tag({},'li').html(tags.Tag({'href':'#'},'a').html('teste 3')),
+        tags.Tag({},'li').html(tags.Tag({'href':'#'},'a').html('teste 4')),
     ])),
     tags.Tag({},'hr').html(),
     tags.Tag({'placeholder':'Fill the field...'},'input').html(),

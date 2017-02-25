@@ -10,7 +10,7 @@ describe('component example standalone composed operations', function () {
 });
 
 describe('component example standalone flow control', function () {
-  it('promise success', function (done) {
+  it('promise success for boolean treatment', function (done) {
     componentExampleStandAlone.promise(function () { return true; }).success(function (res) {
       res.data.should.be.eql([]);
       done();
@@ -18,7 +18,7 @@ describe('component example standalone flow control', function () {
   });
 
   it('promise then', function (done) {
-    componentExampleStandAlone.promise(function () {}).then(function (res) {
+    componentExampleStandAlone.promise(function () { return {}; }).then(function (res) {
       res.data.should.be.eql([]);
       done();
     });

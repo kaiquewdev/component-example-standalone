@@ -4,10 +4,13 @@ function appendTextHandler() {
 }
 exports.appendText = appendTextHandler;
 
-function promiseHandler() {
-    this.then = function (fn) {
-      return fn({data:[]});
-    };
+function promiseHandler(highFn) {
+    highFn = highFn || function () {};
+    if (highFn()) {
+      this.then = function (fn) {
+        return fn({data:[]});
+      };
+    }
     this.when = function (fn) {
       return fn({data:[]});
     };

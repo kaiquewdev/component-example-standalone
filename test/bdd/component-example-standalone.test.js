@@ -1,7 +1,7 @@
 var should = require('should');
 var componentExampleStandAlone = require('../../js/component-example-standalone');
 
-describe('component example standalone', function () {
+describe('component example standalone composed operations', function () {
   it('appendText', function () {
     componentExampleStandAlone.appendText('hello', ' world').should.be.eql('hello world')
     componentExampleStandAlone.appendText('one',' two',' three',' four').should.be.eql('one two three four');
@@ -9,9 +9,9 @@ describe('component example standalone', function () {
   });
 });
 
-describe('component example standalone', function () {
+describe('component example standalone flow control', function () {
   it('promise then', function (done) {
-    componentExampleStandAlone.promise().then(function (res) {
+    componentExampleStandAlone.promise(function () { return true; }).then(function (res) {
       res.data.should.be.eql([]);
       done();
     });

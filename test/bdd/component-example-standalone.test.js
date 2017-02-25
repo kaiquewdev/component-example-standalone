@@ -17,20 +17,6 @@ describe('component example standalone flow control', function () {
     });
   });
 
-  it('promise then', function (done) {
-    componentExampleStandAlone.promise(function () { return {}; }).then(function (res) {
-      res.data.should.be.eql([]);
-      done();
-    });
-  });
-
-  it('promise when', function (done) {
-    componentExampleStandAlone.promise().when(function (res) {
-      res.data.should.be.eql([]);
-      done();
-    })
-  });
-
   it('promise fail when the result was falsy', function (done) {
     componentExampleStandAlone.promise(function () { return false; }).fail(function (res) {
       res.data.should.be.eql([]);
@@ -38,9 +24,23 @@ describe('component example standalone flow control', function () {
     });
   });
 
+  it('promise then', function (done) {
+    componentExampleStandAlone.promise(function () { return {ok:1}; }).then(function (res) {
+      res.data.should.be.eql([{ok:1}]);
+      done();
+    });
+  });
+
+  it('promise when', function (done) {
+    componentExampleStandAlone.promise(function () { return {ok:1}; }).when(function (res) {
+      res.data.should.be.eql([{ok:1}]);
+      done();
+    })
+  });
+
   it('promise result', function (done) {
-    componentExampleStandAlone.promise().result(function (res) {
-       res.data.should.be.eql([]);
+    componentExampleStandAlone.promise(function () { return {ok:1}; }).result(function (res) {
+       res.data.should.be.eql([{ok:1}]);
        done();
     });
   });

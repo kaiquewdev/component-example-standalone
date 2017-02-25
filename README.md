@@ -29,6 +29,18 @@
 + [Selenium server standalone] (http://selenium-release.storage.googleapis.com/index.html)
 + [nvm](https://github.com/creationix/nvm) `optional`
 
+## Composing the component by generation
+
+```
+bazel run :generate_component
+```
+
+## Execute tests for the primary component
+
+```
+bazel run :component_example_standalone_test
+```
+
 ## Installation
 
 ```

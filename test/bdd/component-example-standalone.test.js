@@ -10,8 +10,15 @@ describe('component example standalone composed operations', function () {
 });
 
 describe('component example standalone flow control', function () {
+  it('promise success', function (done) {
+    componentExampleStandAlone.promise(function () { return true; }).success(function (res) {
+      res.data.should.be.eql([]);
+      done();
+    });
+  });
+
   it('promise then', function (done) {
-    componentExampleStandAlone.promise(function () { return true; }).then(function (res) {
+    componentExampleStandAlone.promise(function () {}).then(function (res) {
       res.data.should.be.eql([]);
       done();
     });
@@ -24,8 +31,8 @@ describe('component example standalone flow control', function () {
     })
   });
 
-  it('promise fail', function (done) {
-    componentExampleStandAlone.promise().fail(function (res) {
+  it('promise fail when the result was falsy', function (done) {
+    componentExampleStandAlone.promise(function () { return false; }).fail(function (res) {
       res.data.should.be.eql([]);
       done();
     });

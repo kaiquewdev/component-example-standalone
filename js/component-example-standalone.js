@@ -7,16 +7,21 @@ exports.appendText = appendTextHandler;
 function promiseHandler(highFn) {
     highFn = highFn || function () {};
     if (highFn()) {
-      this.then = function (fn) {
+      this.success = function (fn) {
         return fn({data:[]});
       };
     }
+    this.then = function (fn) {
+	return fn({data:[]});
+    };
     this.when = function (fn) {
       return fn({data:[]});
     };
-    this.fail = function (fn) {
-      return fn({data:[]});
-    };
+    if (!highFn()) {
+      this.fail = function (fn) {
+        return fn({data:[]});
+      };
+    }
     this.result = function (fn) {
       return fn({data:[]});
     };

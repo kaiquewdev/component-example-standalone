@@ -5,32 +5,32 @@ function appendTextHandler() {
 exports.appendText = appendTextHandler
 
 function promiseHandler(highFn) {
-    let data = []
+    let output = {data:[]}
     highFn = highFn || function () {}
     if (highFn() && typeof(highFn()) === 'boolean') {
       this.success = function (fn) {
-        return fn({data:data})
+        return fn.call(this,output)
       }
     }
     if (!highFn() && typeof(highFn()) === 'boolean') {
       this.fail = fn => {
-        return fn({data:data})
+	return fn.call(this,output)
       }
     }
     if (typeof(highFn()) === 'object') {
       this.then = fn => {
-	data.push(highFn())
-        return fn.call(this,{data:data})
+	output.data.push(highFn())
+        return fn.call(this,output)
       }
 
       this.when = fn => {
-	data.push(highFn())
-	return fn.call(this,{data:data})
+	output.data.push(highFn())
+	return fn.call(this,output)
       }
 
       this.result = fn => {
-	data.push(highFn());
-        return fn.call(this,{data:data})
+	output.data.push(highFn());
+        return fn.call(this,output)
       }
     }
     return this

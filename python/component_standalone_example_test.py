@@ -38,7 +38,7 @@ class ComponentExampleStandaloneTest(unittest.TestCase):
     def test_component_list(self):
         self.driver.get(self.component_target_url)
         self.li = self.driver.find_elements_by_css_selector('ul.component-example-standalone > li')
-        self.assertTrue(len(self.li) == 4)
+        self.assertTrue(len(self.li) == 2**5)
 
     def test_component_input(self):
         self.driver.get(self.component_target_url)

@@ -37,7 +37,7 @@ raw_component = '''
     tags.Tag({'class':'first_paragraph'},'p').html('Modularized component'),
     tags.Tag({},'hr').html(),
     tags.Header(2).html('List items'),
-    tags.Tag({'class':'component-example-standalone'},'ul').html(''.join([tags.Tag({},'li').html(tags.Tag({'href':'#'},'a').html('teste %s' % (i+1))) for i in range(2**5)])),
+    tags.Tag({'class':'component-example-standalone'},'ul').html(''.join([tags.Tag({},'li').html(tags.Tag({'href':'#'},'a').html('teste %s' % (i+1))) for i in range(2**8)])),
     tags.Tag({},'hr').html(),
     tags.Tag({'placeholder':'Fill the field...'},'input').html(),
     tags.Tag({},'textarea').html(),

@@ -3,10 +3,8 @@
 const BOOLEAN = 'boolean'
 const OBJECT = 'object'
 
-function appendTextHandler() {
-  return Array.prototype.slice.call(arguments,[]).join('')
-}
-exports.appendText = appendTextHandler
+function appendText() { return Array.prototype.slice.call(arguments,[]).join('') }
+exports.appendText = appendText
 
 function promiseHandler(highFn) {
     let that = this;
@@ -15,29 +13,25 @@ function promiseHandler(highFn) {
     let isObject = (v) => typeof(v) === OBJECT
     highFn = highFn || function () {}
     if (highFn() && isBoolean(highFn())) {
-      that.success = function (fn) {
-        return fn.call(that,output)
-      }
+      that.success = resolve => resolve.call(that,output)
     }
     if (!highFn() && isBoolean(highFn())) {
-      that.fail = fn => {
-	return fn.call(that,output)
-      }
+      that.fail = resolve => resolve.call(that,output)
     }
     if (isObject(highFn())) {
-      that.then = fn => {
+      that.then = resolve => {
 	output.data.push(highFn())
-        return fn.call(that,output)
+        return resolve.call(that,output)
       }
 
-      that.when = fn => {
+      that.when = resolve => {
 	output.data.push(highFn())
-	return fn.call(that,output)
+	return resolve.call(that,output)
       }
 
-      that.result = fn => {
+      that.result = resolve => {
 	output.data.push(highFn());
-        return fn.call(that,output)
+        return resolve.call(that,output)
       }
     }
     return that
